@@ -1,0 +1,218 @@
+#include <iostream>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+
+using namespace std;
+
+
+
+int main ()
+{
+    srand (time(NULL));
+
+
+    string vNombre[2];
+    int vTipoCarta[20] ;
+    int cartasJugadorDos[5];
+    int cartasJugadorUno[5];
+    int aux = 0;
+    char confirmar ;
+
+
+    cout << " CLUTCH " << endl ;
+    cout << "\n" ;
+
+    int numero ;
+    cout <<"------------------------------------------"<<endl ;
+    cout << "1- JUGAR :" <<endl<< "2- ESTADISTICAS : " << endl ;
+    cout <<"3- CREDITOS : "<<endl<<"0- SALIR :"<< endl ;
+    cout << "-----------------------------------------" << endl ;
+    cout <<"ELIJA UNA OPCION : " ;
+
+
+    cin >> numero ;
+    cout << "\n" ;
+    switch (numero)
+    {
+    case 1:
+        cout << "CLUTCH"<<endl<< "------------------------------------------";
+        cout << endl<<"Antes de comenzar deben registrar sus nombres :" << endl  ;
+
+        for (int i=0 ; i<2 ; i++)
+        {
+            cout << "Ingrese nombre "<< (i+1)<< " : " ;
+            cin>> vNombre[i] ;
+            if(i==1 )
+            {
+                cout << "Confirmar nombres (S/N)?" <<endl ;
+                cin >> confirmar ;
+                if (confirmar=='s')
+                {
+                    cout << "confirmado"<< endl;
+                }
+                else
+                {
+                    cout<< "no confirmado"<< endl ;
+                }
+
+            }
+
+        }
+        cout<<  "------------------------------------------"<<endl ;
+        /*aca agregar función para esta parte*/
+
+        cout << "CLUTCH"<<endl;
+        cout << "------------------------------------------"<<endl;
+        cout << "RONDA #1" << endl;
+        cout << vNombre[0]<<" vs "<< vNombre[1] << endl ;
+        cout << "\n" ;
+
+
+
+
+
+/// 10 CARTAS AL AZAR ///
+
+        srand(time(NULL));
+        for(int i = 0; i < 10; i++)
+        {
+            if (i==0)
+            {
+                cout << "---------- cartas de  " << vNombre[0] <<" --------------"   << endl ;
+            }
+            if(i==5)
+            {
+                cout << "---------- cartas de  " << vNombre[1] <<" --------------"   << endl ;
+            }
+            aux = (1 + rand() % 20);
+            int aux2 = 0;
+            while(aux2 < i)
+            {
+                if(aux != cartasJugadorUno[aux2] && aux != cartasJugadorDos[aux2])
+                    aux2++;
+                else
+                {
+                    aux = (1 + rand() % 20);
+                    aux2 = 0;
+
+                }
+            }
+            cartasJugadorUno[i] = aux;
+            cartasJugadorDos[i] = aux ;
+            cout << cartasJugadorUno[i] << "   " << cartasJugadorDos[i]  << "   ";
+
+
+
+
+            switch (cartasJugadorUno[i])
+            {
+            case 1:
+                cout << " 10 CORAZON" << endl ;
+                break ;
+            case 2:
+                cout << " 10 TREBOL" << endl ;
+                break;
+            case 3:
+                cout << " 10 PICAS" << endl ;
+                break;
+            case 4:
+                cout << " 10 DIAMANTE" << endl ;
+                break;
+            case 5:
+                cout << " J CORAZON" << endl ;
+                break;
+            case 6:
+                cout << " J TREBOL" << endl ;
+                break;
+            case 7:
+                cout << " J PICAS" << endl ;
+                break;
+            case 8:
+                cout << " J DIAMANTE" << endl ;
+                break;
+            case 9:
+                cout << " Q CORAZON" << endl ;
+                break;
+            case 10:
+                cout << "Q TREBOL" << endl ;
+                break;
+            case 11:
+                cout << "Q PICAS" << endl ;
+                break;
+            case 12:
+                cout << "Q DIAMANTE" << endl ;
+                break;
+            case 13:
+                cout << "K CORAZON" << endl ;
+                break;
+            case 14:
+                cout << "K TREBOL" << endl ;
+                break;
+            case 15:
+                cout << "K PICAS" << endl ;
+                break;
+            case 16:
+                cout << "K DIAMANTE" << endl ;
+                break;
+            case 17:
+                cout << "A corazon" << endl ;
+                break;
+            case 18:
+                cout << "A TREBOL" << endl ;
+                break;
+            case 19:
+                cout << "A PICAS" << endl ;
+                break;
+            case 20:
+                cout << "A DIAMANTE" << endl ;
+                break;
+
+
+
+            }
+        }
+
+
+
+
+        break ;
+
+
+
+
+
+
+    case 2:
+        cout << "ESTADISTICAS : " ;
+        break ;
+
+
+    case 3:
+        cout << "CREDITOS : " << endl <<  "\n" ;
+        cout << "TOMAS GARCIA , LEGAJO N 29780" << "\n" ;
+        break ;
+
+
+    case 0:
+        cout<< "DESEA SALIR? (S/N)" << endl;
+        char op ;
+        cin >> op ;
+        if (op == 's')
+        {
+            cout <<"\n"<< "HA SIDO UN PLACER JUGAR CONTIGO :) " << "\n" ;
+            return 0;
+        }
+        else {};
+        break;
+
+    default:
+        cout << "EL NUMERO NO ES CORRECTO." ;
+    }
+
+
+
+
+    return 0 ;
+}
+
